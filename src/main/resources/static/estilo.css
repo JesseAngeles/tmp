@@ -1,0 +1,36 @@
+body{
+	 font-family: Arial, Arial, Helvetica, sans-serif;
+	 background-color: antiquewhite;
+	 margin:0;
+	 padding:0;
+}
+.container{
+	max-width: 800px;
+	margin:100px auto;
+	background-color: aliceblue;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 0 20px rgba(0,10,12,40);
+}
+h1{
+	color:blue;
+	font-size: 32px;
+	margin-bottom: 20px;
+}
+p{
+	color:#666;
+	font-size: 18px;
+	line-height:2;
+	margin-bottom: 20px;
+}
+a{
+	color: #612727;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+a:hover{
+	color: #007bff;
+}
+a:focus{
+	outline: none;
+}
