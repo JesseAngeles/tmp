@@ -15,19 +15,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-
+@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
 @Table(name = "Categoria")
 public class Categoria implements Serializable {
-
-	public void setNombreCategoria(String nombreCategoria) {
-		this.nombreCategoria = nombreCategoria;
-	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -43,23 +39,11 @@ public class Categoria implements Serializable {
 	@Column(name = "nombreCategoria", length = 50, nullable = false)
 	private String nombreCategoria;
 
-	public Long getIdCategoria() {
-		return idCategoria;
-	}
-
-	public void setIdCategoria(Long idCategoria) {
-		this.idCategoria = idCategoria;
-	}
-
-	public String getDescripcionCategoria() {
-		return descripcionCategoria;
+	public void setNombreCategoria(String nombreCategoria) {
+		this.nombreCategoria = nombreCategoria;
 	}
 
 	public void setDescripcionCategoria(String descripcionCategoria) {
 		this.descripcionCategoria = descripcionCategoria;
-	}
-
-	public String getNombreCategoria() {
-		return nombreCategoria;
 	}
 }

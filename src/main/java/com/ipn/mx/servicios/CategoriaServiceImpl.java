@@ -8,30 +8,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ipn.mx.modelo.entidades.Categoria;
 import com.ipn.mx.modelo.repositorios.CategoriaRepository;
-import com.ipn.mx.modelo.repositorios.TMPCategoriaRepository;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 	@Autowired
 	CategoriaRepository repository;
-	TMPCategoriaRepository repository2;
-	
+
 	@Override
-	@Transactional (readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Categoria> findAll() {
 		return (List<Categoria>) repository.findAll();
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Categoria findById(Long id) {
-		System.out.println(id);
-		return repository2.findById(1);
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional
-	public void deletById(Long id) {
+	public void deleteById(Long id) {
 		repository.deleteById(id);
 	}
 

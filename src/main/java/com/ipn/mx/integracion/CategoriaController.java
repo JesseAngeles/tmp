@@ -15,44 +15,42 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
 import com.ipn.mx.modelo.entidades.Categoria;
-import com.ipn.mx.servicios.CategoriaService;
+import com.ipn.mx.servicios.CategoriaServiceImpl;
 
-@CrossOrigin(origins={"*"})
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/apiCategoria")
-
 public class CategoriaController {
 	@Autowired
-	CategoriaService service;
-	
+	CategoriaServiceImpl service;
+
 	@GetMapping("/categorias")
 	@ResponseStatus(HttpStatus.OK)
-	
-		public List<Categoria> mostrarCategoria(){
-			return service.findAll();
-		}
-	
+	public List<Categoria> mostrarCategoria() {
+		return service.findAll();
+	}
+
 	@GetMapping("/categorias/{id}")
-	@ResponseStatus(HttpStatus.CREATED)
-	
-		public Categoria mostrarCategoria (@PathVariable Long id){
-			return service.findById(id);
-		}
-	
+	@ResponseStatus(HttpStatus.OK)
+	public Categoria mostrarCategoria(@PathVariable("id") Long id) {
+		return service.findById(id);
+	}
+
 	@PostMapping("/categorias")
 	@ResponseStatus(HttpStatus.CREATED)
-		public Categoria  crearCategoria (@RequestBody Categoria categoria){
-			
-			return service.save(categoria);
-		}
-	
+	public Categoria crearCategoria(@RequestBody Categoria categoria) {
+
+		return service.save(categoria);
+	}
+
 	@PutMapping("/categorias/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Categoria actualizarCategoria(@RequestBody Categoria categoria, @PathVariable Long id) {
+	public Categoria actualizarCategoria(@RequestBody Categoria categoria, @PathVariable("id") Long id) {
 		Categoria c = service.findById(id);
-	
+
+		c.setDescripcionCategoria(categoria.getDescripcionCategoria());
+		c.setNombreCategoria(categoria.getDescripcionCategoria());
+
 		return service.save(c);
 	}
-	
 }
-
