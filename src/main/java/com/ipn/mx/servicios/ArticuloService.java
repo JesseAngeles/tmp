@@ -12,4 +12,6 @@ public interface ArticuloService {
     public void deleteById(Long id);
 
     public Articulo save(Articulo articulo);
+
+    public List<Articulo> findByIdCategoria(Long idCategoria);
 }

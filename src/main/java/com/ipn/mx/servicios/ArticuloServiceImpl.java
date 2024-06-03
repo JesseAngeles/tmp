@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,13 +40,15 @@ public class ArticuloServiceImpl implements ArticuloService {
         return repository.save(articulo);
     }
 
-    public List<Articulo> findByIdCategoria(Long id) {
+    @Override
+    public List<Articulo> findByIdCategoria(Long idCategoria) {
         List<Articulo> articulos = (List<Articulo>) repository.findAll();
+
         Iterator<Articulo> iterator = articulos.iterator();
 
         while (iterator.hasNext()) {
             Articulo articulo = iterator.next();
-            if (articulo.getCategoria().getIdCategoria() != id) {
+            if (articulo.getCategoria().getIdCategoria() != idCategoria) {
                 iterator.remove();
             }
         }
